@@ -1,18 +1,18 @@
 import { notFound } from "next/navigation";
 import { NEWS } from "@/data/news";
 
-type NewsPageProps = { // ← PageProps という名前は使わない
-params: { id: string };
-};
-
-// ページタイトル
-export function generateMetadata({ params }: NewsPageProps) {
+// メタデータ
+export function generateMetadata(
+{ params }: { params: { id: string } }
+) {
 const item = NEWS.find(n => n.id === params.id);
 return { title: item ? `${item.title} | お知らせ` : "お知らせ" };
 }
 
-// 詳細ページ本体
-export default function NewsDetailPage({ params }: NewsPageProps) {
+// ページ本体
+export default function NewsDetailPage(
+{ params }: { params: { id: string } }
+) {
 const item = NEWS.find(n => n.id === params.id);
 if (!item) return notFound();
 
