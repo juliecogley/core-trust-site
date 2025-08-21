@@ -1,20 +1,20 @@
 import { notFound } from "next/navigation";
 import { NEWS } from "@/data/news";
 
-type PageProps = {
-params: { id: string }; // ← これだけを props の型にする
+type NewsPageProps = { // ← PageProps という名前は使わない
+params: { id: string };
 };
 
-// ページタイトルを動的に
-export function generateMetadata({ params }: PageProps) {
+// ページタイトル
+export function generateMetadata({ params }: NewsPageProps) {
 const item = NEWS.find(n => n.id === params.id);
 return { title: item ? `${item.title} | お知らせ` : "お知らせ" };
 }
 
 // 詳細ページ本体
-export default function NewsDetailPage({ params }: PageProps) {
+export default function NewsDetailPage({ params }: NewsPageProps) {
 const item = NEWS.find(n => n.id === params.id);
-if (!item) return <p>記事が見つかりませんでした。</p>;
+if (!item) return notFound();
 
 return (
 <main className="mx-auto max-w-[1200px] px-5 py-16">
