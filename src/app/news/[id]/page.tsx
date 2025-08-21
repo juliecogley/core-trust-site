@@ -1,19 +1,19 @@
 import { notFound } from "next/navigation";
 import { NEWS } from "@/data/news";
 
-// メタデータ
-export function generateMetadata(
-{ params }: { params: { id: string } }
-) {
-const item = NEWS.find(n => n.id === params.id);
-return { title: item ? `${item.title} | お知らせ` : "お知らせ" };
+// ここで自前の型だけを宣言（PageProps は使わない）
+type NewsPageParams = { id: string };
+type NewsPageProps = { params: NewsPageParams };
+
+// ページタイトル用
+export function generateMetadata({ params }: NewsPageProps) {
+const item = NEWS.find((n) => n.id === params.id);
+return { title: item ? `${item.title}｜お知らせ` : "お知らせ" };
 }
 
-// ページ本体
-export default function NewsDetailPage(
-{ params }: { params: { id: string } }
-) {
-const item = NEWS.find(n => n.id === params.id);
+// 詳細ページ本体
+export default function NewsDetailPage({ params }: NewsPageProps) {
+const item = NEWS.find((n) => n.id === params.id);
 if (!item) return notFound();
 
 return (
