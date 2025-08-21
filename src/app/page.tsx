@@ -63,7 +63,7 @@ LASTING SUPPORT.
 {/* ボタン*/}
 <div className="mt-6 flex gap-3">
     
-<a href="/company" className="px-5 py-2.5 rounded-md border-2 border-gray-400 shadow-md"><p className="text-gray-600">詳細はこちら →</p></a>
+<Link href="/company" className="px-5 py-2.5 rounded-md border-2 border-gray-400 shadow-md"><p className="text-gray-600">詳細はこちら →</p></Link>
 </div>
 
 </div>
@@ -134,7 +134,7 @@ className="w-full h-[400px] object-cover block" />
 ))}
 </div>
 <div className="mt-8">
-<a href="/works" className="inline-flex px-5 py-2.5 rounded-md border-2 border-gray-400 shadow-md"><p className="text-gray-600">その他実績はこちら →</p></a>
+<Link href="/works" className="inline-flex px-5 py-2.5 rounded-md border-2 border-gray-400 shadow-md"><p className="text-gray-600">その他実績はこちら →</p></Link>
 </div>
 </div>
 </section>
@@ -168,7 +168,7 @@ className="w-full h-[400px] object-cover block" />
 )}
 
 <div className="mt-8">
-<a href="/news" className="inline-flex px-5 py-2.5 rounded-md border-2 border-gray-400 shadow-md"><p className="text-gray-600">詳細はこちら →</p></a>
+<Link href="/news" className="inline-flex px-5 py-2.5 rounded-md border-2 border-gray-400 shadow-md"><p className="text-gray-600">詳細はこちら →</p></Link>
 </div>
 </div>
 </section>
@@ -197,10 +197,10 @@ className="absolute inset-0 h-full w-full object-cover"
 <p className="mt-3 text-white/90 md:text-base leading-7 max-w-[40ch]">
 課題やゴールを伺い、最適なプランをご提案します。まずはお気軽にご相談ください。
 </p>
-<a href="/contact" className="mt-6 inline-flex h-11 items-center rounded-md px-5
+<Link href="/contact" className="mt-6 inline-flex h-11 items-center rounded-md px-5
 bg-[#dda71e] text-white hover:bg-[#c79118] shadow-md">
 お問い合わせはこちら →
-</a>
+</Link>
 </div>
 </div>
 </div>

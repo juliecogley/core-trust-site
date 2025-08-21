@@ -1,11 +1,12 @@
 // src/app/components/WorkCard.tsx
 import Image from "next/image";
+import Link from "next/link";
 
 export default function WorkCard({
 href, title, thumb, tags,
 }: { href:string; title:string; thumb?:string; tags?:string[] }) {
 return (
-<a href={href} className="group block overflow-hidden rounded-lg shadow-md">
+<Link href={href} className="group block overflow-hidden rounded-lg shadow-md">
 <div className="relative aspect-[16/9] bg-gray-100">
 {thumb ? (
 <Image src={thumb} alt="" fill className="object-cover" sizes="(min-width:768px) 33vw, 100vw" />
@@ -21,6 +22,6 @@ return (
 </div>
 )}
 </div>
-</a>
+</Link>
 );
 }
