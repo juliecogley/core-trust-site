@@ -1,20 +1,28 @@
 import { notFound } from "next/navigation";
 import { NEWS } from "@/data/news";
 
-export async function generateStaticParams() {
-return NEWS.map(n => ({ id: n.id }));
+type PageProps = {
+params: { id: string }; // ← これだけを props の型にする
+};
+
+// ページタイトルを動的に
+export function generateMetadata({ params }: PageProps) {
+const item = NEWS.find(n => n.id === params.id);
+return { title: item ? `${item.title} | お知らせ` : "お知らせ" };
 }
 
-export default function NewsDetail({ params }: { params: { id: string } }) {
+// 詳細ページ本体
+export default function NewsDetailPage({ params }: PageProps) {
 const item = NEWS.find(n => n.id === params.id);
-if (!item) return notFound();
+if (!item) return <p>記事が見つかりませんでした。</p>;
+
 return (
-<main className="mx-auto max-w-[800px] px-5 py-16 md:py-24">
-<p className="text-sm text-gray-500">{new Date(item.date).toLocaleDateString("ja-JP")}</p>
-<h1 className="mt-2 text-3xl font-semibold">{item.title}</h1>
-<article className="mt-6 leading-7 text-gray-800">
-<p>{item.body}</p>
-</article>
+<main className="mx-auto max-w-[1200px] px-5 py-16">
+<h1 className="text-2xl font-bold">{item.title}</h1>
+<p className="mt-2 text-sm text-gray-500">
+{new Date(item.date).toLocaleDateString("ja-JP")}
+</p>
+<div className="mt-8 whitespace-pre-wrap">{item.body}</div>
 </main>
 );
 }

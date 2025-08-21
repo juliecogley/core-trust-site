@@ -63,7 +63,7 @@ LASTING SUPPORT.
 {/* ボタン*/}
 <div className="mt-6 flex gap-3">
     
-<Link href="/company" className="px-5 py-2.5 rounded-md border-2 border-gray-400 shadow-md"><p className="text-gray-600">詳細はこちら →</p></Link>
+<Link href="/about" className="px-5 py-2.5 rounded-md border-2 border-gray-400 shadow-md"><p className="text-gray-600">詳細はこちら →</p></Link>
 </div>
 
 </div>

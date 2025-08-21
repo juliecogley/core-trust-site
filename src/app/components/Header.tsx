@@ -18,7 +18,7 @@ document.body.style.overflow = "";
 }, [open]);
 
 const items = [
-{ href: "/about", label: "ABOUT" },
+{ href: "/#about", label: "ABOUT" },
 { href: "/#services", label: "SERVICE" },
 { href: "/works", label: "WORKS" },
 { href: "/news", label: "NEWS" },
