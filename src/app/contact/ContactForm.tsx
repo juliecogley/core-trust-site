@@ -1,21 +1,29 @@
 "use client";
 import { useState } from "react";
 
+type Payload = {
+name: string;
+email: string;
+message: string;
+honey?: string; // ハニーポット(未入力想定)
+};
+
+
 export default function ContactForm() {
 const [sending, setSending] = useState(false);
 const [error, setError] = useState<string | null>(null);
 
-async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 e.preventDefault();
-setError(null);
 setSending(true);
+setError(null);
 
 const form = new FormData(e.currentTarget);
-const payload = {
-name: form.get("name"),
-email: form.get("email"),
-message: form.get("message"),
-honey: (form.get("company") as string) || "",
+const payload: Payload = {
+name: String(form.get("name") ?? ""),
+email: String(form.get("email") ?? ""),
+message: String(form.get("message") ?? ""),
+honey: String(form.get("company") ?? "") || undefined,
 };
 
 try {
@@ -24,14 +32,15 @@ method: "POST",
 headers: { "Content-Type": "application/json" },
 body: JSON.stringify(payload),
 });
-if (!res.ok) throw new Error("送信に失敗しました");
+if (!res.ok) throw new Error(`HTTP ${res.status}`);
 window.location.href = "/contact/thanks";
-} catch (err: any) {
-setError(err.message || "エラーが発生しました");
+} catch (err: unknown) {
+const msg = err instanceof Error ? err.message : "予期せぬエラーが発生しました";
+setError(msg);
 } finally {
 setSending(false);
 }
-}
+};
 
 return (
 <form className="mt-8 grid gap-4" onSubmit={onSubmit}>
