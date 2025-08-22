@@ -2,8 +2,7 @@ import { notFound } from "next/navigation";
 import { NEWS } from "@/data/news";
 
 // ここで自前の型だけを宣言（PageProps は使わない）
-type NewsPageParams = { id: string };
-type NewsPageProps = { params: NewsPageParams };
+interface NewsPageProps  { params:{ id: string }};
 
 // ページタイトル用
 export function generateMetadata({ params }: NewsPageProps) {
