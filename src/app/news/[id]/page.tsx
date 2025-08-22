@@ -1,19 +1,19 @@
+// src/app/news/[id]/page.tsx
 import { notFound } from "next/navigation";
 import { NEWS } from "@/data/news";
 
-// ページタイトル
-export function generateMetadata(
-{ params }: { params: { id: string } }
-) {
-const item = NEWS.find((n) => n.id === params.id);
+// 1) 自前の最小限の型だけ
+type NewsParams = { id: string };
+
+// 2) メタデータ（必要なら）
+export function generateMetadata({ params }: { params: NewsParams }) {
+const item = NEWS.find(n => n.id === params.id);
 return { title: item ? `${item.title}｜お知らせ` : "お知らせ" };
 }
 
-// 詳細ページ本体
-export default function NewsDetailPage(
-{ params }: { params: { id: string } }
-) {
-const item = NEWS.find((n) => n.id === params.id);
+// 3) ページ本体も同じ“素の型”で受け取る
+export default function NewsDetailPage({ params }: { params: NewsParams }) {
+const item = NEWS.find(n => n.id === params.id);
 if (!item) return notFound();
 
 return (
