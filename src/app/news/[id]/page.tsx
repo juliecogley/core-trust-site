@@ -1,4 +1,4 @@
-// src/app/news/[id]/page.tsx
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { notFound } from "next/navigation";
 import { NEWS } from "@/data/news";
 
