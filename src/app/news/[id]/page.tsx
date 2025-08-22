@@ -2,17 +2,17 @@
 import { notFound } from "next/navigation";
 import { NEWS } from "@/data/news";
 
-// 1) 自前の最小限の型だけ
-type NewsParams = { id: string };
+// ---- まずはデプロイ優先。型は any で受ける ----
+type IdParams = { id: string };
 
-// 2) メタデータ（必要なら）
-export function generateMetadata({ params }: { params: NewsParams }) {
+export function generateMetadata(props: any) {
+const { params } = props as { params: IdParams };
 const item = NEWS.find(n => n.id === params.id);
 return { title: item ? `${item.title}｜お知らせ` : "お知らせ" };
 }
 
-// 3) ページ本体も同じ“素の型”で受け取る
-export default function NewsDetailPage({ params }: { params: NewsParams }) {
+export default function NewsDetailPage(props: any) {
+const { params } = props as { params: IdParams };
 const item = NEWS.find(n => n.id === params.id);
 if (!item) return notFound();
 
