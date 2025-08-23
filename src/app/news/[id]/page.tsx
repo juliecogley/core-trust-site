@@ -2,18 +2,16 @@
 import { notFound } from "next/navigation";
 import { NEWS } from "@/data/news";
 
-// ---- まずはデプロイ優先。型は any で受ける ----
-type IdParams = { id: string };
-
+// props の型を any にしてエラー回避
 export function generateMetadata(props: any) {
-const { params } = props as { params: IdParams };
-const item = NEWS.find(n => n.id === params.id);
+const { params } = props;
+const item = NEWS.find((n) => n.id === params.id);
 return { title: item ? `${item.title}｜お知らせ` : "お知らせ" };
 }
 
 export default function NewsDetailPage(props: any) {
-const { params } = props as { params: IdParams };
-const item = NEWS.find(n => n.id === params.id);
+const { params } = props;
+const item = NEWS.find((n) => n.id === params.id);
 if (!item) return notFound();
 
 return (
