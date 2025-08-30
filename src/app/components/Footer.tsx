@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
+
 
 export default function Footer() {
 return (
@@ -8,10 +10,16 @@ return (
 <div className="md:flex md:items-start md:justify-between gap-8">
 {/* 左カラム：ロゴ→会社名→住所（PCでもこの順で縦積み） */}
 <div className="md:max-w-[60%]">
-<h2 className="text-xl font-bold flex items-center gap-2">
-<span className="text-[#dda71e]">▲</span> 
-<Link href="/" className="font-semibold">CORE TRUST</Link>
-</h2>
+<Link href="/" aria-label="CORE TRUST Home" className="flex items-center gap-2">
+<Image
+src="/logo-coretrust2.svg" // public 配下はルートからのパスでOK
+alt="CORE TRUST"
+width={160} // 実寸に合わせて調整
+height={40}
+priority // ファーストビューなので優先読み込み
+className="h-8 w-auto md:h-10" // 画面幅で少し大きく/>
+/>
+</Link>
 <p className="mt-1 text-sm">コアトラスト株式会社</p>
 
 <div className="mt-4 space-y-1 text-sm">

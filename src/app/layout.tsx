@@ -19,8 +19,33 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 
 export const metadata: Metadata = {
-title: "会社公式サイト",
-description: "会社のWebサイトのポートフォリオです。",
+title: "CORE TRUST",
+description: "Speed, Quality, Lasting Support",
+icons: {
+icon: "/favicon.svg", // ここで指定
+},
+
+openGraph: {
+title: "CORE TRUST",
+description: "Speed, Quality, Lasting Support",
+url: "https://core-trust-site.vercel.app", // デプロイ先URL
+siteName: "CORE TRUST",
+images: [
+{
+url: "/ogp.png", // public配下に置いた画像のパス
+width: 1200,
+height: 630,
+},
+],
+locale: "ja_JP",
+type: "website",
+},
+twitter: {
+card: "summary_large_image",
+title: "CORE TRUST",
+description: "Speed, Quality, Lasting Support",
+images: ["/ogp.png"],
+},
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

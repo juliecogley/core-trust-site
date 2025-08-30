@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Container from "../components/Container";
+import Image from "next/image";
 
 export default function Header() {
 const [open, setOpen] = useState(false);
@@ -28,8 +29,17 @@ const items = [
 return (
 <header className="border-b border-white bg-white">
 <Container className="h-16 flex items-center justify-between">
-<Link href="/" className="font-semibold"> 
-<span className="text-[#dda71e]">▲</span>CORE TRUST</Link>
+<Link href="/" aria-label="CORE TRUST Home" className="flex items-center gap-2">
+<Image
+src="/logo-coretrust.svg" // public 配下はルートからのパスでOK
+alt="CORE TRUST"
+width={160} // 実寸に合わせて調整
+height={40}
+priority // ファーストビューなので優先読み込み
+className="h-8 w-auto md:h-10" // 画面幅で少し大きく/>
+/>
+</Link>
+
 
 {/* ★ 常に表示（responsiveクラスは付けない！） */}
 <button
@@ -69,7 +79,16 @@ p-6 flex flex-col gap-4"
 aria-label="primary"
 >
 <div className="flex items-center justify-between">
-<Link href="/" className="font-semibold">CORE TRUST</Link>
+<Link href="/" aria-label="CORE TRUST Home" className="flex items-center gap-2">
+<Image
+src="/logo-coretrust3.svg" // public 配下はルートからのパスでOK
+alt="CORE TRUST"
+width={160} // 実寸に合わせて調整
+height={40}
+priority // ファーストビューなので優先読み込み
+className="h-8 w-auto md:h-10" // 画面幅で少し大きく/>
+/>
+</Link>
 <button aria-label="閉じる" onClick={() => setOpen(false)} className="p-2">
 <svg viewBox="0 0 24 24" className="size-5" aria-hidden="true">
 <path
