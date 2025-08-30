@@ -2,6 +2,13 @@
 import Image from "next/image";
 import Link from "next/link";
 
+type Props = {
+id: string;
+title: string;
+thumb?: string; // public配下のパス or 外部URL
+tags?: string[];
+};
+
 export default function WorkCard({
 href, title, thumb, tags,
 }: { href:string; title:string; thumb?:string; tags?:string[] }) {
